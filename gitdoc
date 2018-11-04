@@ -43,14 +43,15 @@ GIT COMMANDS AND DESCRIPTION
 41.To solve conflict go to the file where conflict occur manually in git project in windows.Open the file u can see the two types of contents there,talk to the developers and remove the content which is useless and add file and commit then push or merge. 
 42.git hooks:It is a script which triggers when you perform certain task in git.It is used to automate the task.Go to github/gitlab select a repositorygo to settings-webhooks.Add jenkins url.When u commit some changes jenkins will detect the changes and through hooks it will start building the code.
 ---------------------------------------------------------------------------------------------------------------
-To remove project fron Gitlab:
+TO REMOVE PROJECT FROM GITLAB
+-----------------------------
 1.Select the project
 2.go to settings
 3.advance expand
 4.delete project
 --------------------------------------
---------------------------------------
-To  remove repository fron Github:
+TO REMOVE PROJECT FROM GITHUB
+------------------------------
 1.Select the project
 2.go to settings
 3.delete project
@@ -58,7 +59,7 @@ To  remove repository fron Github:
 
 FROM SVN TO GIT MIGRATION:
 -------------------------------------------------------------------------------------------------------------------------------
-1.INSTALL RUBY
+1.Install ruby
 2.Go to the path of ruby installer:c/rubyinstaller/bin/ --type cmd 
 3.In cmd prompt type gem install svn2git----it is tool which helps to migrate from svn to git
 4.install visualsvn and svn tortoise tool to commit 
