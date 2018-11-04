@@ -1,0 +1,74 @@
+GIT COMMANDS AND DESCRIPTION
+1. git config –global user.name “javeed”(to set the username)
+2. git config –global user.email abc@gmail.com(to set the email of the user)
+3. git config –-list(to know the configuration of git)
+4. touch filename(used to create a file)
+5. git add filename(used to add the file to the staging/indexing area)
+6. git commit –m”message”(added to the local repo of git)
+7. git clone url(used to create local repository)
+8. git remote add origin url(used in existing repository)
+9. git remote –v (it gives the address of the repositories)
+10.git log(to show commits)
+11.git log –oneline(to show commits in shorthand)
+12.git show commit-id(to show the content of the versions of the same file)
+13.git branch branch-name(to create a branch)
+14.git checkout branch-name(to get into the another branch)
+15.git branch(list out the all the branches)
+16.git branch –m oldername newname(to rename the branch)
+17.git branch –d branchname(to delete the branch)
+18.git push origin:branchname(to delete in remote repo)
+19.git tag tag-name(to create a tag)
+20.git push origin tagname(to push to remote repo)
+21.git tag –d tagname(to delete the tag)
+22.git push origin:tagname(to delete in remote repo)
+23.git blame filename(it show who and how many times modified the file)
+24.git stash(it is keeps the files in temporary area of git and keeps working tree clean without commited)
+25.git stash list(list out the files in stash area)
+26.git stash apply stash-id(to revert from stash area to staging area)
+26.git stash drop stash-id(to delete the file in stash)
+27.got stash pop(it download file from stash and same time it delete file s from stash)
+28.git clean –f(to delete the file in unstaged area)
+29.git rm filename(to delete the file in staging area)
+30.git reset filename(to take the files from staging to unstaged area)
+31.git push origin branch-name(to push to remote repo)
+32.git clone –b branch-name remote-url(to clone a particular branch from remote repo)
+33.git rest –mixed HEAD~1(it takes the recent commit and keeps in unstaged area)
+34.git reset –soft HEAD~1(it takes recent commit to staged area)
+35.git reset –hard HEAD~1(it delete the commit and entire  file from work space)
+36.git merge branch-name(to merge the child to master)unnecessary commits
+37.git rebase branch-name(to merge the child to master)no unnecessary commits
+38.git cheery-pick branch-name(to merge a single commit to master)
+39.git checkout  –b  repo origin1/master
+40.Conficts occur if two developers are editing the same file with different content.When u try to push or merge conflict occur 
+41.To solve conflict go to the file where conflict occur manually in git project in windows.Open the file u can see the two types of contents there,talk to the developers and remove the content which is useless and add file and commit then push or merge. 
+42.git hooks:It is a script which triggers when you perform certain task in git.It is used to automate the task.Go to github/gitlab select a repositorygo to settings-webhooks.Add jenkins url.When u commit some changes jenkins will detect the changes and through hooks it will start building the code.
+---------------------------------------------------------------------------------------------------------------
+To remove project fron Gitlab:
+1.Select the project
+2.go to settings
+3.advance expand
+4.delete project
+--------------------------------------
+--------------------------------------
+To  remove repository fron Github:
+1.Select the project
+2.go to settings
+3.delete project
+
+
+FROM SVN TO GIT MIGRATION:
+-------------------------------------------------------------------------------------------------------------------------------
+1.INSTALL RUBY
+2.Go to the path of ruby installer:c/rubyinstaller/bin/ --type cmd 
+3.In cmd prompt type gem install svn2git----it is tool which helps to migrate from svn to git
+4.install visualsvn and svn tortoise tool to commit 
+5.create sample repository and copy url.craete a folder on desktop get into the folder rightclick svn checkout automatically it will copy the repo url click ok svn repo is created.Create a file there and right click svn commit there give msg for each file.
+6.create a folder and open git bash in that folder
+7.svn log -q https://personal-PC/svn/sample_project/ | awk -F '|' '/^r/ {sub("^ ", "", $2); sub(" $", "", $2); print $2" = "$2" <"$2">"}' | sort -u > authors.txt
+8.First have to generate a author.txt file by using above 
+9.git svn clone link of svn repo
+10.ls ---u can see the project
+11.create a repository in github/gitlab
+12.git remote add origin link
+13.git push origin master
+---------------------------------MIGRATED SVN TO GIT----------------------------
