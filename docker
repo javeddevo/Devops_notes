@@ -1,6 +1,13 @@
-DOCKER:
+DOCKER:It is used to deploy applications easy 
 -------
 Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, andship it all out as one package.
+
+DOCKRER TERMINOLOGIES:
+
+IMAGE:It is a metadata of an os.It cant have memory it just have storage space
+
+CONTAINER:When the image gets executes it has its own running space and all the features of the application.Each container has its own isolated area
+
 
 ------------------------------------
 TO INSTALL DOCKER ON UBUNTU 16.04
@@ -27,4 +34,37 @@ $sudo apt-get install -y docker-ce
 6.Docker should now be installed, the daemon started, and the process enabled to start on boot. Check that it's running:
 
 $ sudo systemctl status docker
+--------------------------------------------------------------
+1.To see the docker version
+$ docker --version
+
+2.Any help from docker
+$ docker --help
+
+3.To pull any image from docker hub
+$ docker pull image-name
+
+4.To run the image
+$ docker run image-name
+
+5.To see the list of images in local repo
+$ docker images
+--------------------------------------------------------------
+NOTE:If u want to download the image just give "docker pull image-name.If u want to run the image give"docker run image".If u run the image first it check from the local deamon if not there it checks from the docker hub and executes.docker run image means pull+executes.
+
+1.docker--Client
+2.docker deamon-service
+3.registry-docker hub
+--------------------------------------------------------------
+6.To see the running containers
+$ docker ps
+
+7.T see the history of cantainers
+$ docker ps -a
+
+8.To spinup the container without pulling from dockerhub
+$ docker run -it centos "bin/bash"
+
+9.to remove the multiple container at a time
+$ docker rm $(docker rm -a -q)
 
