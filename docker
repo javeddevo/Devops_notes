@@ -68,3 +68,10 @@ $ docker run -it centos "bin/bash"
 9.to remove the multiple container at a time
 $ docker rm $(docker rm -a -q)
 
+10.to be in attach mode(when u come out of the promt jenkins stop working)attach mode
+$ docker run -p 8081:8080 jenkins
+
+11.docker -d -p 8081:8080 jenkins
+attach mode--when u come out of the prompt still jenkins will run in browser
+
+
