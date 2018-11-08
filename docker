@@ -8,7 +8,7 @@ IMAGE:It is a metadata of an os.It cant have memory it just have storage space
 
 CONTAINER:When the image gets executes it has its own running space and all the features of the application.Each container has its own isolated area
 
-
+----------------     DOCKER IS WRITTEN IN GO LANGUAGE      -------------------
 ------------------------------------
 TO INSTALL DOCKER ON UBUNTU 16.04
 ------------------------------------
@@ -74,4 +74,32 @@ $ docker run -p 8081:8080 jenkins
 11.docker -d -p 8081:8080 jenkins
 attach mode--when u come out of the prompt still jenkins will run in browser
 
+12.To get into container
+$ docker exec -it conatiner-name /bin/bash
 
+13.to perform linux commands without getting into container 
+$ docker exec container-id ls/
+------------------------------------------------------------------------
+WHAT CONTAINER DOES?
+It will create a user space which is isolated to launch an application
+------------------------------------------------------------------------
+1.Isolation:It is done beacause of the linux kernel concept called namespace(pid namespace,user namespace,net namespace)
+2.control groups:These are useful to control the process
+example if u run a containee in a docker and run application on top of that for suppose if its ram is 512mb and if u want to increase to 2gb then the cgropus will help 
+3.what permission u would give to process--capabilities
+exaple if u want ur process to control the network of ur system certain capabilities are used like CAP_NET_BIND_SERVICE
+4.libconatiner:if ur running docker on linux ubuntu if the kernel gets updated docker may run maynot run u cant garuntee so to avoid this problem lib container comes where it speaks to kernel makes changes
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+TAG:It is nothing but a version of ur image---docker run -p 80:80 nginx:1.12
+----------------------------------------------------------------------------
+14.to stop conatiner-id or name
+$ docker stop id
+
+15.To start the container 
+$ docker start id or anme
+
+16.to know abou the container info
+$ docker inspect container-id
+
+17.docker run -d -p 8080:80 nginx:1.12(tag)
+tag means versioning of an image
