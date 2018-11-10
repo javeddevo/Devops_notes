@@ -1,0 +1,246 @@
+Docker installation in ubuntu
+-------------------------------------
+$ sudo apt-get update
+$ sudo apt-get install software-properties-common
+$ sudo apt-add-repository ppa:ansible/ansible
+$ sudo apt-get update
+$ sudo apt-get install ansible
+ 
+ansible --version
+--------------------------------------------
+1.lauch aws instance ubuntu
+2.install ansible
+3.create user-adduser ansible and give passwd
+4.change visudo file give permission to user ansible all
+5.give passwd authentication to yes in vi /etc/ssh/sshd_config
+6.restart -service ssh restart
+----------
+Launch another instance ubuntu ie node server
+do the same steps  what have u done in control machine ansd start the ssh 
+service
+-check whether u are able to login to user or not
+  ssh ansible@localhost
+- to communicate to node machine from control machine
+ ssh ansible@node privateip
+passwd
+you are able to login
+exit to go back
+---------
+To make simple communication without passwd
+create a ssh key gen in control machin
+ssh-keygen
+ssh-copy-id node private dns address
+ssh node private dns address
+ur able to login without passwd
+---------
+lauch another machine rehat ie node2
+do the same following steps as above  
+-------------------------------------------------------
+
+Inventory :It is a place where info about the nodes to which the configuration has to be happen  are attached to the main control machine ie called inventry.
+                         (OR)
+
+Ansible works against multiple systems in your infrastructure at the same time. It does this by selecting portions of systems listed in Ansible's inventory, which defaults to being saved in the location /etc/ansible/hosts
+
+file path:vi /etc/ansible/hosts--in this you have give the node dns address
+
+--To verify it is able to connect or not
+from the contro machine ie main ansible server--ansible -m ping all
+o/p will give the connection of the nodes
+
+--we can give the server nodes as a modules like db server webserver spefically like [dbserver] ip
+                       [webserver]ip
+so that u can exute the what u want to  configure--ansible  -m ping dbserver
+-----------
+Note:if u want to ping ur own local machine just copy id of ur local host--ssh-copy-id ansible@localhost
+keep ur localhost in ur host file
+and run ansibel -m ping all
+it will ping
+------------
+You can give ur own inventroy in any location according to ur projcect 
+example:copy the local host file to other location give some entry or modify some entries in host file now try to ping -ansible -m ping all
+it will ping from default file ie /etc/ansible/hosts 
+if u want to ping file that u have given u have write  c md--ansible -m ping -i myfile all(-i indicates the new inventroy file)
+----------------
+YAML: (YAML Ain't Markup Language) YAML (YAML Ain't Markup Language) is a human-readable data serialization language. It is commonly used for configuration files, but could be used in many applications where data is being stored (e.g. debugging output) or transmitted (e.g. document headers).is a human-readable data serialization language. It is commonly used for configuration files, but could be used in many applications where data is being stored (e.g. debugging output) or transmitted (e.g. document headers)
+
+yaml file start with ---
+
+---
+ theaters:
+  - name:pvr
+    movies 
+     - 
+       hello
+       hi
+    showtimes
+     - 9
+       8
+  - name:pvp
+    movies
+     -
+       a
+       b
+       c
+    showtiming
+      - 8
+
+(OR)
+
+--- 
+LBRCE:
+   
+ - branches
+    - 
+      cse
+      it
+      mec
+      ece
+
+ - branch:it
+      - 
+        rollno:1
+        name:javed
+        dob:12/45/455
+        addres:helloworld
+        phno:12345
+      - 
+        rollno:2
+        name:hello
+        dob:12/452/122
+        address:hei
+---------------------------------
+playbooks:
+---------------------------------
+sampleplaybook:
+-----------------------------
+---
+- hosts: all
+  tasks:
+   - name: ping all nodes
+     ping
+-----------------------------
+create a directory in control machine as playbooks
+create a file sampelplaybook copy and paste the code u have written above
+To run the playbook-ansible-playbook sampleplaybook
+------------------------------
+apache yml file
+-----------------------------
+---
+- hosts: ubuntu
+  become: yes
+  tasks:
+    - name: This will install apache
+      apt:
+       name: apache2
+       state: present
+-------------------------
+ansible-playbook apachefile.yml
+this will give you error bcaz u have to give ubuuntu passwd ie u have to add -K
+ansible-playbook apachefile.yml -K
+COPY the ip of nde-ubuntu in browser
+-------------------------------
+apache in redhat
+------------------------
+---
+- hosts: redhat
+  become: yes
+  tasks:
+   - yum:
+      name: httpd
+      state: present
+   - service:
+      name: httpd
+      state: started
+TO RUN- ansibel-playbook rehatfile.yml -K
+----------------
+tomcat-ubuntu
+--------------
+---
+- hosts: ubuntu
+  become: yes
+  tasks:
+   - apt:
+      name: tomcat7
+      state: present
+      update_cache: yes
+ansible-playbook tomcat.yml -K
+
+--------------------------------------------
+create user:
+---
+- hosts: localhost
+  become: yes
+  gather_facts: no(if u dont keep this ansible will execute facts ie info of the machine which may result slow.so keep facts no by default it is yes)
+  tasks:
+    - name: Add User
+      user:
+        name: javed
+        password: "123"
+        state: present
+-----------------------------------------
+copy:
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: copy
+    copy:
+     src: /home/ansible/myinv
+     dest: /home/ansible/playbooks
+-------------------------------------
+To copy file from url:
+---
+- hosts: localhost
+  become: yes
+  tasks:
+   - name: copy url
+     get_url:
+      url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+      dest:/home/ansible/jenkins
+-----------------------------------
+To know whether which apt or yum should be gib=ven in module for server
+CMD:ansible -m setup servername or nodename
+to know particularly--ansible -m setup -a "filetr=ansible_os*"
+-------------------
+note:use when: ansible_os_family === "rehat" or "debian"
+if u try to install pache on rehat and ubuntu the system get confuse bcaz debian dont know the yum and rehat dont knoe the apt so u have to give the condition when:
+-------------------------------------------
+if u install tomcat after then the latest version come u have to chage from the whole code so to avoid this
+copy host file in playbook
+create a file varaibale where the invertry is present ie host
+varaible file=group_var and create file same as ur groupname 
+write ---
+         packagename: tomcat7
+now create a tomcat.yml file
+-------------
+---
+- hosts: ubuntu
+  become: yes
+  tasks:
+   - apt:
+      name: "{{ packagename }}"
+      state: present
+      update_cache: yes
+     notify:
+     - restart tomcat
+  handlers:
+   - name: restart tomcat
+     service:
+      name: "{{ packagename }}"
+      state: restarted
+if version chages u dont need to the code just change the varaibale file
+--------------------------------------------------
+if u want to install a group of applications 
+---
+ - hosts: ubuntu
+   become: yes
+   tasks:
+   - name: install utilities
+     apt:
+      name: "{{ item }}"
+      state: present
+     with_items: ["git","tree"]
+
+
+
