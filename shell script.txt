@@ -1,0 +1,387 @@
+
+if -simple if,nested if,if else
+operators:
+<   -lt
+>   -gt
+<= -le
+>= -ge
+== -eq
+=!  -ne
+these are for only numericls
+-----------------------------------------
+nested if:
+echo "nestedif"
+echo "read a"
+read a
+echo "read b"
+read b
+echo "read operation op"
+read op
+if [ $op == "add" ]
+then
+ e= expr $a + $b
+elif [ $op == "sub" ]
+then
+ e= expr $a - $b
+elif [ $op == "mul" ]
+then
+ e= expr $a \* $b
+fi
+~
+-------------------------------------------------
+switch:case
+
+echo "read a"
+read a
+echo "read b"
+read b
+echo "read op"
+read op
+case $op in
+add) d= expr $a + $b ;;
+sub) d= expr $a - $b ;;
+mul) d= expr $a \* $b ;;
+*) echo "you op is not matching"
+esac
+----------------------------------------------------
+while:statement
+a=0
+
+while [ $a -lt 10 ]
+do
+   echo $a
+   a=`expr $a + 1`
+done
+---------------------------------------
+for:
+echo  "for loop"
+for i in 1 2 3 4
+do
+echo i value is $i
+done
+
+------------------------------------
+functions 
+echo functions
+function add()
+{
+
+ tol= expr $1 + $2
+ echo total : $tol
+}
+add 10 20
+----------------------------------------------------
+Case statement:
+--------------------
+echo "Enter the character:"
+read var
+case $var in
+[a-z])
+        echo "enetred lowercase"
+        ;;
+[A-Z])
+      echo "entered the upper case"
+      ;;
+
+[0-10])
+        echo "entered the numbers"
+        ;;
+?)
+        echo "entered the special symbol"
+        ;;
+*)
+        echo "invalid"
+        ;;
+esac
+
+-----------------------------------------------------------
+Case statement 2:
+----------------------
+echo "enter the characte:"
+read word
+case $word in
+[aeiou]* | [AEIOU]*)
+                        echo "entered the vowel"
+                        ;;
+[o-9]*)
+                        echo "enterthe first digit"
+                        ;;
+*[0-9])
+                        echo "entered the last digit"
+                        ;;
+*)
+                        echo "invalid"
+                        ;;
+esac
+
+----------------------------------------------------------------
+OR OPERATOR
+----------------------
+echo "Enter the character:"
+read var
+if [ `echo $var | wc -c` -eq 3 ]
+then
+     if [ $var = a -o $var = j -o $var = -d ]
+     then
+          echo "success"
+     else
+          echo "invalid"
+     fi
+else
+    echo "failed"
+fi
+~
+--------------------------------------------------------------------
+OR OPERATOR
+----------------------
+echo "Enter the character:"
+read var
+if [ $var = a -o $var = j -o $var -eq 2 ]
+then
+     echo "validated"
+else
+     echo "failed"
+fi
+~
+---------------------------------------------------------------
+AND OPERATOR
+--------------------
+echo "enter the no's below 100:"
+read num
+if [ $num -le 90 -a $num -ge 20 ]
+then
+     echo "project is success"
+else
+     echo "out of the block"
+fi
+------------------------------------------------------------------
+STRING COMPARISON
+-------------------------
+str1="hey you"
+str2="hey wthasts"
+str3=""
+
+[ "str1" = "str2" ]
+echo $?
+
+[ "str1" != "str2" ]
+echo $?
+
+[ -n "str1" ]
+echo $?
+
+[ -z "str3" ]
+echo $?
+
+NOTE: -n= length is more than 0
+           -z = empty string
+-------------------------------------------------------
+Size of file is greater than zero :
+--------------------------------------
+echo "enter the file name:
+read ufile
+if [ -s $ufile ]
+then
+     echo "size is gretaer than zero"
+else
+     echo "file is not present"
+fi
+--------------------------------------------------------------
+While loop:
+-------------------
+count=1
+while [ $count -le 10 ]
+do
+        echo $count
+        count=`expr $count + 1`
+done
+-----------------------------------------------------------------
+Until statement:
+----------------------
+count=1
+until [ $count -ge 10 ]
+do
+        echo $count
+        count=`expr $count + 1`
+done
+--------------------------------------------------------------
+FOR LOPP:
+----------------------
+for item in *
+do
+        if [ -d $item ] #(D AND F ARE FILE AND DIRECTORY
+)
+        then
+                echo $item
+        fi
+don
+--------------------------------------
+note:0=sucess
+         1=failure
+------------------------------------------------------------
+Internal field seperaatot(ifs)
+echo "enter the name:"
+read name
+line=`grep $name /etc/passwd`
+IFS=:
+set $line
+echo "username:$1"
+echo "passwd:$2"
+~
+~
+
+
+-------------------------------------------------------------------
+print tthe string according to time:
+echo "enter the statement"
+read str
+for word in $str
+do
+        echo $word
+        sleep 2
+done
+----------------------------------------------------
+NOTE:write  cmd is used to commnunicate
+write username
+----------------------------------------------------
+NOTE:functions are used to execute new cmds
+hello()
+{
+	echo "helloworld"
+}
+bye()
+{
+	ls -l
+}
+u have to give execute permissions chmod 
++x fun.sh
+. fun.sh(it will stored by shell)
+sh .fun.sh
+to remove from bash memory 
+type: unset hello
+         unset bye
+-------------------------------------------------
+To find file if present or not:
+------------------------------------\
+echo -e "Enter the file name: \c"
+read filename
+if [ -e $filename ](FOR EMPTY FILE FLAG IS -S)
+then
+        echo "$filename is present"
+else
+        echo  "$filename is not present"
+fi
+----------------------------------------------------------------------
+TO APPEND:
+----------------
+echo -e "Enter the file name: \c"
+read filename
+if [ -f $filename ]
+then
+        if [ -w $filename ]
+        then
+                echo "print something and cont+d to exists"
+                cat >> $filename
+        else
+                echo "file dont have write permission"
+        fi
+else
+        echo  "$filename not exits"
+fi
+--------------------------------------------------------------------------
+arthematic operation;
+--------------------------------
+a=24
+b=26
+echo $( expr $a + $b )
+echo $( expr $a - $b )
+
+-------------------------------------------------------------------------
+square root:
+----------------
+a=10.521
+b=20.23
+echo  $a + $b  | bc
+echo  $a / $b  | bc
+
+num=25
+echo "sqrt($num)" | bc -l( bs for non integer -l for square root)
+---------------------------------------------------------------------------------------
+ARRAY:
+---------------------------
+os=('unbuntu' 'redhat' 'centos')
+os[3]='fedora'
+unset os[2]
+echo "${os[@]}"
+echo "${os[1]}"
+echo "${!os[@]}"-to know the index
+echo ${#os[@]} lenghth of array
+----------------------------------------------------------------------------------
+Read the content of file:
+-----------------------------\
+cat rd.sh | while read p
+do
+        echo $p
+done
+-------------------------------------------------------------------------------------
+for loop
+------------
+for (( i=0; i<5; i++ ))
+do
+        echo $i
+done
+~
+------------------------------
+select statemeny:
+-------------------------- 
+
+select name in jhon ram jk nani
+do
+        case $name in
+                jhon)
+                        echo "jhoin uis selected"
+                        ;;
+                ram)
+                        echo "ram is selected"
+                        ;;
+                jk)
+                        echo "jk is selected"
+                        ;;
+                nani)
+                        echo "nanai is selected"
+                        ;;
+                *)
+                        echo "error"
+                        ;;
+                esac
+done
+-----------------------------------------------------------------------------------------
+
+creating user
+------------------------------
+mkdir fuck
+cd "fuck"
+i=100
+for ((i=1; i<=100; i++))
+do
+        touch $i.sh
+done
+
+or
+mkdir dir
+cd "dir"
+i=1
+while [ $i -le 100]
+do
+	touch $i.sh
+	((i++))
+done
+--------------------------------------------------------------
+special shell variables:
+------------------------------
+$*-it will print all cmd parameters
+$@-same as $*
+$#-it will give no of cmd parametes
+$$-process id
+$?-if previos cmd fail it will return like 121 221 ....
+if it returns 0 the previous cmd was successful
