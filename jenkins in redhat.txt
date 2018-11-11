@@ -1,0 +1,42 @@
+Jenkins is a Java application, so the first step is to install Java. Run the following command to install the OpenJDK 8 package:
+
+sudo yum install java-1.8.0-openjdk-devel
+Copy
+The current version of Jenkins does not support Java 10 (and Java 11) yet. If you have multiple versions of Java installed on your machine make sure Java 8 is the default Java version.
+
+The next step is to enable the Jenkins repository. To do that, import the GPG key using the following curl command:
+
+curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
+Copy
+And add the repository to your system with:
+
+sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+
+Once the repository is enabled, install the latest stable version of Jenkins by typing:
+
+sudo yum install jenkins
+
+After the installation process is completed, start the Jenkins service with:
+
+sudo systemctl start jenkins
+Copy
+To check whether it started successfully run:
+
+systemctl status jenkins
+
+
+Finally enable the Jenkins service to start on system boot.
+
+sudo systemctl enable jenkins
+
+jenkins.service is not a native service, redirecting to /sbin/chkconfig.
+Executing /sbin/chkconfig jenkins on
+
+Adjust the Firewall
+If you are installing Jenkins on a remote CentOS server that is protected by a firewall you need to port 8080.
+
+Use the following commands to open the necessary port:
+
+sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+sudo firewall-cmd --reload
+                        
