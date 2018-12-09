@@ -11,7 +11,7 @@ GIT COMMANDS AND DESCRIPTION
 10.git log(to show commits)
 11.git log –oneline(to show commits in shorthand)
 12.git show commit-id(to show the content of the versions of the same file)
-13.git branch branch-name(to create a branch)
+13.git branch branch-name(to create a branch) or git checkout -b branch-name(create and get into that branch)
 14.git checkout branch-name(to get into the another branch)
 15.git branch(list out the all the branches)
 16.git branch -m oldername newname(to rename the branch)
