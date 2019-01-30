@@ -102,7 +102,10 @@ TAG:It is nothing but a version of ur image---docker run -p 80:80 nginx:1.12
 $ docker stop id
 
 15.To start the container 
-$ docker start id or anme
+$ docker start id or name
+
+note:to give name to container==>docker run -d -p 80:80 --name my-name nginix
+note:docker images==>shows the images in the local repo
 
 16.to know abou the container info
 $ docker inspect container-id
