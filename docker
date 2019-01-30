@@ -38,6 +38,8 @@ $ sudo systemctl status docker
 ----------------------------------------OR THROUGH SCRIPT-------------------------------------------------------------------
 $ curl -fsSL get.docker.com -o get-docker.sh
 $ sh get-docker.sh
+$ sudo usermode -aG Docker username(added user to docker group so that user can use docker without getting into root)
+
 ----------------------------------------------------------------------------------------------------------------------------
 1.To see the docker version
 $ docker --version
