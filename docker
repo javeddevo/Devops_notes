@@ -250,4 +250,6 @@ JV-brige
 6.docker ecex -it c1 /bin/bash
 7.ping c2
 8.can ping with name
-
+------------------------------------------------------------------------------------------
+1.docker stats==>used to see the container cpu and memory usage
+2.docker cp filename containar-id:filename==>to copy file from local machine to container
