@@ -1,0 +1,16 @@
+vi editor command:
+------------------
+1.w==>will forword for one word
+2.b==>backword
+3.shit+$==>end of the line
+4.0==>beginning of the line
+5.shit+h==>starting point odf line
+6.shift+m==>middle of screen
+7.shift+l==>last of the screen
+8.cntrl+f==>forword one page
+9.ctrl+b==>backword one page
+10.g==>beginning of file
+11.G==>end of the file
+12o:to form a new line
+13.dd==>to delete the line
+14.select no of line++dd==>to delete multiple lines 
