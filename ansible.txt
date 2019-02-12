@@ -30,12 +30,23 @@ To make simple communication without passwd
 create a ssh key gen in control machin
 ssh-keygen
 ssh-copy-id node private dns address
+give the node passwd
 ssh node private dns address
 ur able to login without passwd
 ---------
 lauch another machine rehat ie node2
 do the same following steps as above  
 -------------------------------------------------------
+Ansible components
+---------------------
+1.inventry
+2.modules
+3.Variables
+4.Facts
+5.playbooks and play
+6.template
+7.roles
+8.ansible facts
 
 Inventory :It is a place where info about the nodes to which the configuration has to be happen  are attached to the main control machine ie called inventry.
                          (OR)
@@ -47,6 +58,30 @@ file path:vi /etc/ansible/hosts--in this you have give the node dns address
 --To verify it is able to connect or not
 from the contro machine ie main ansible server--ansible -m ping all
 o/p will give the connection of the nodes
+
+modules:
+--------
+modules is nothing but the linux cmd
+yum install
+yum remove
+it does the activity
+difference between linux cmd and modyule is modules are idompotent
+-----------------------------------------------------------------------------
+ansible facts
+---------------
+ansible facts collects the info of node when ever u push the configuration from main to nodes like cpu infi ip address memory
+--------------------------------------------------------------------------------------------------------------------------------
+playbooks
+---------
+it is the set of instructions
+play is task
+playbooks is written yaml
+-----------------------------------
+note:ansible configuration file path /etc/ansible/ansible.cfg
+--------------------------------------------------------------
+template:it is used for the static and dynamic content
+--------------------------------------------------------
+ansible vault: is for the secure store and handling sensitive data like password
 
 --we can give the server nodes as a modules like db server webserver spefically like [dbserver] ip
                        [webserver]ip
