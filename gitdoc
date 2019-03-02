@@ -39,6 +39,8 @@ GIT COMMANDS AND DESCRIPTION
 37.git rebase branch-name(to merge the child to master)no unnecessary commits
 38.git cheery-pick branch-name(to merge a single commit to master)
 39.git checkout  –b  repo origin1/master
+note:amend is to edit the commit message
+
 40.Conficts occur if two developers are editing the same file with different content.When u try to push or merge conflict occur 
 41.To solve conflict go to the file where conflict occur manually in git project in windows.Open the file u can see the two types of contents there,talk to the developers and remove the content which is useless and add file and commit then push or merge. 
 42.git hooks:It is a script which triggers when you perform certain task in git.It is used to automate the task.Go to github/gitlab select a repositorygo to settings-webhooks.Add jenkins url.When u commit some changes jenkins will detect the changes and through hooks it will start building the code.
