@@ -9,7 +9,7 @@ GIT COMMANDS AND DESCRIPTION
 8. git remote add origin url(used in existing repository)
 9. git remote –v (it gives the address of the repositories)
 10.git log(to show commits)
-11.git log –oneline(to show commits in shorthand)
+11.git log –oneline(to show commits in shorthand) git log --oneline --all --decorate
 12.git show commit-id(to show the content of the versions of the same file)
 13.git branch branch-name(to create a branch) or git checkout -b branch-name(create and get into that branch)
 14.git checkout branch-name(to get into the another branch)
