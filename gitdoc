@@ -46,6 +46,7 @@ note:amend is to edit the commit message
 43. git rebase -i HEAD~10(all the commits are merged in a single commit)
 44.git diff(shows file content diffrence from working  to local repo)
 45.git diff -staged(show the file diffrence from staged to local repo)
+46.git commit -am"this command for directly commiting from unstaged to local repo"
 ---------------------------------------------------------------------------------------------------------------
 TO REMOVE PROJECT FROM GITLAB
 -----------------------------
