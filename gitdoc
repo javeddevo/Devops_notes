@@ -1,4 +1,17 @@
 GIT COMMANDS AND DESCRIPTION
+============================================================================================================================================
+Notes:GIt is a distributed version control system.
+It is a inr timecheckout
+offline
+you cant checkout singlefile/dir/branch
+useful for small repos
+There are four stages in git
+--------------------------------------------------
+1.unstaged/untracked-touch file.txt
+2.staged/tracked-git add file.txt
+3.git commit -m"commited"-It goes to local repos
+4.git push bracnch-goes to remote repos
+----------------------------------------------------------------------------------------------------------------
 1. git config –global user.name “javeed”(to set the username)
 2. git config –global user.email abc@gmail.com(to set the email of the user)
 3. git config –-list(to know the configuration of git)
