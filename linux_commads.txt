@@ -1,0 +1,158 @@
+man:help for command[man command]
+man uname 
+uname:print kernal name #uname kernal system info
+uname -r:kernel release 
+uname -v:kernel version
+uname -m:processor
+uname -o:os
+uname -a:[1-5steps] info
+hotsname:print hostname
+whoami:current user
+tty:terminal take input for which there is a file from which it takes
+useradd username:add user
+passwd user:password for user
+su username:to get into another user
+id:give the details of the user(id,gid)
+sudo visudo:to give sudo permisiions to user
+sudo groupadd groupname:to add group
+sudo usermod -g groupname username:to add user to group
+sudo userdel username:to delete user
+sudo groupdel groupname:to delet group 
+passwd user:to add/change password to the user
+date:it will give prent date and time
+date +%b:give month
+date +%a:give day
+date +%D:full date
+date -s y-m-d hh:mm:ss:to change the date and time(use before this cmd timedatectl set-ntp 0)network time protocol 
+or
+timdatectl set-time hh:mm:ss
+cal:it gibe the current cal of month
+cal 1 2021:jan month calender
+bc:it help in perform mathematical operations
+echo "hello":print statement
+echo -e "javved\tabdul":-e for special characters
+touch filename:to create file empty
+head hello.txt:first 10 lines of file
+tail filename:last lines of file
+heal -4 filename:1st four lines
+tail -3 filename:last four lines
+tail -f apache.log:live logs 
+more filename :to full file
+less filename:shorthand to read file(scrollup and down)
+wc file:line word characters
+cut -f 2 file.txt:cut the text tab word
+cut -f 2 -d ":" filename:it will give 2nd word after delimeter (:)
+file filename:it will give what type of file(like text executable)
+who:who is logged in
+sort filename:sort the file alphanumeric
+sort file1 file2:sort two files
+sort -o new.txt file1 file2:saving output to new file 
+sort -o new.txt -u file1 file2:saving unique 
+mkdir :directory
+mkdir -p /hello/hi:hi within hello
+rm -rv hello/hi/kk:it will remove kk file/directory
+ls -a:hidden files
+cat fileno:it will display info
+cat > hello.txt...ctr+d:create file with content
+chmod 777 file anme:to give permissions(r=4,w=2,e=1)
+soft link-shortcut with same name
+ln -s source/file destination:create soft link-shortcut(if get deleted original shortcopy will lost)
+ln sourcepath/file destination:create hardlink
+ls -ln:shows the actual file path mapped to link-shortcut
+cp source destination:copy file source to destination
+cp -r source destination:source to destination directory
+mv file1 file2:it will rename
+mv source destination:it will copy the file/dir 
+cat /etc/shadow:it will show users and group passwd
+gzip filename:to gip the file
+gunzip filename:to unzip the file
+bzip2 file name:to zip the file(it will have leass memory comapared to gzip)
+bunzip2 filename:to unzip the file
+zip dir.zip dir:to zip the directory
+unzip dir.zip:to unzip(good for backup)
+tar -czvf foldername.tar.gz foldername:to tar the folder
+tar -zxvf foldername.tar:to undo
+free -m:shows the momoery usage of the system
+command --help:for help of the command
+ifconfig:ipaddress
+===============================================================
+BIOS:basic input and output system
+on the motherboard there is chip like phonexbios etc/shadow
+tis chip will detect the all the connection of dvices like ram harddisk,mouse,keyboard..
+then it will load the os and execute boot loader
+bios password is imp beacuse if the system is loss no one can confiure os init or you can set password for drives using bios
+==================================================================================
+Boot process:
+1.bios
+2.mbr(master boot loader:it is the 1st sector in boottable disk like /dev/sda
+It is less lan 512 bytes.It has 3 compoments 1.primary boot loader 446 bytes,2.partions table 64 bytes,3.mbr validation 
+check 2 bytes
+it will executes the grub
+3.grub:used for load os like if you have combo of kernel images which is os like windows and linux
+grub display a screen on system if you dont enter anything it will take uts own kernel image
+which then executes kernel
+4.kernel:it is the mediator between  the os and hardware
+it will 1st executes the init service which has a process id
+5.systemd:it contains multiple services where kernel ist initiate the process
+6.targest:runlevel
+runlevel 0
+renlevel 1
+......... 6
+connect through cli or network or putyy
+or through cli
+==============================================================================================================================
+cronjob:used for schedulimg the jobs
+crontab -l:showws the present jobs of a particular user
+crontab -e:opens a editor for scheduling
+* * * * * echo $(date)>> /opt/file.txt
+*:minutes[0-60]
+*:hours[0-24]
+*:day[1-31]
+*:month[0-12]
+*:day of week[0-6] 0or 7   be sunday
+
+example:*/10 * * * * :for every 10 minutes
+
+* * * * * cd desktop && /usr/bin/python3 test.py >> /opt/sample
+crontab guru.com
+==========================================================================================================
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
