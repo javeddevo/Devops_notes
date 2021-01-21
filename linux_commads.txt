@@ -117,6 +117,21 @@ example:*/10 * * * * :for every 10 minutes
 crontab guru.com
 ==========================================================================================================
 
+lsblk:list block devices
+df -h:file system dick usage
+------------------------------------------------------------------------
+How to mount the disk volume?
+1.lsblk
+2.attach volume
+3.file -s /dev/xvdf:file system is created or not
+4. mkfs.ext4  /dev/xvdf(creaed file system)
+5.create directory
+6.mount  /dev/xvdf /directory:mount volume to path
+7.umount /dirpath:to unmount
+8.to mount everytime after the system bootsuse should enter
+vi /etc/fstab--- /dev/xvdf /dirpath sxt4 default,nofail 0
+==============================================================================================
+
  
 
 
