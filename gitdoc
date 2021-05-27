@@ -94,7 +94,17 @@ FROM SVN TO GIT MIGRATION:
 ---------------------------------MIGRATED SVN TO GIT----------------------------
 ----how to drag the remote ranch in local repo-------:
 1.create branch in remote
-2.local repo:git branch -a
+2.local repo:git fetch
+             git branch -a
 3.git checkout branchname
 
-hoe to drag th
+--------------------------------------------------
+git stash:stash will not work on new file in unstaged area
+          stash will work in staging area i,e when you add the file 
+          stash will work in unstaged area when you try to modfy existing file i,e already commited
+          git stash list
+          git stash apply id
+          git stash drop id
+          git stash drop id
+
+
