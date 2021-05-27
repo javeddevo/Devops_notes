@@ -9,8 +9,8 @@ There are four stages in git
 --------------------------------------------------
 1.unstaged/untracked-touch file.txt
 2.staged/tracked-git add file.txt
-3.git commit -m"commited"-It goes to local repos
-4.git push bracnch-goes to remote repos
+3.git commit -m"commited"-It goes to local repos(local repo)
+4.git push bracnch-goes to remote repos(remote repo)
 ----------------------------------------------------------------------------------------------------------------
 1. git config –global user.name “javeed”(to set the username)
 2. git config –global user.email abc@gmail.com(to set the email of the user)
@@ -18,7 +18,8 @@ There are four stages in git
 4. touch filename(used to create a file)
 5. git add filename(used to add the file to the staging/indexing area)
 6. git commit –m”message”(added to the local repo of git)
-7. git clone url(used to create local repository)
+7. git clone url(used to create local repository) copy of remote repository ex:if new dev has joined he need that repo in local, he need to clone
+   git pull(if there is an update in remote repo that changes you want in local then you have to pull
 8. git remote add origin url(used in existing repository)
 9. git remote –v (it gives the address of the repositories)
 10.git log(to show commits)
