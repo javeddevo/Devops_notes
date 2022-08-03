@@ -253,3 +253,7 @@ JV-brige
 ------------------------------------------------------------------------------------------
 1.docker stats==>used to see the container cpu and memory usage
 2.docker cp filename containar-id:filename==>to copy file from local machine to container
+
+$ docker inspect 
+to get the details about the container 
+
